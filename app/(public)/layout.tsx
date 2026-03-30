@@ -2,6 +2,8 @@
 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { ScrollToTop } from '@/components/ScrollToTop'
+import { CookieConsent } from '@/components/CookieConsent'
 
 export default function PublicLayout({
   children,
@@ -11,8 +13,12 @@ export default function PublicLayout({
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">{children}</main>
+      <main className="min-h-screen overflow-x-hidden">
+        {children}
+      </main>
       <Footer />
+      <ScrollToTop />
+      <CookieConsent />
     </>
   )
 }
