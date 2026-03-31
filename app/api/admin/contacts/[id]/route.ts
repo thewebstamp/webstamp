@@ -5,11 +5,11 @@ import { query } from '@/lib/db';
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { status } = await req.json();
-    const { id } = params;
+    const { id } = await params;
 
     if (!status || !['new', 'read', 'replied', 'archived'].includes(status)) {
       return NextResponse.json(
